@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+	<%= image_tag @picture %>
+</p>
+<p>
+	<%= @comment.entry %>
+</p>
+
+
+<%= link_to 'Edit', edit_picture_comment_path(@picture, @comment) %> |
+<%= link_to 'Back', picture_path(@picture) %>

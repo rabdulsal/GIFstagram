@@ -1,0 +1,28 @@
+<h1>Here is your GIF</h1>
+<p id="notice"><%= notice %></p>
+
+<table>
+	<tr>
+		<td>
+			<%= image_tag @picture.url %>
+		</td>
+	<tr>
+		<td><%= link_to 'Edit', edit_picture_path(@picture) %> | <%= link_to 'Back', pictures_path %></td>
+		<td>
+	</tr>
+	<tr>
+        <td><%= link_to "Leave Comment", new_picture_comment_url(@picture) %></td>
+    <tr>
+        <td>
+          <ul>
+            <% @picture.comments.each do |comment| %> 
+              <li>             
+                  <%= comment.entry %> | <%= link_to "Edit", edit_picture_comment_url(comment) %> | <%= link_to "Delete", picture_comment_url(comment), method: :delete, confirm: "Sure you want to delete?" %>           
+              </li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>    	
+</table>
+
+

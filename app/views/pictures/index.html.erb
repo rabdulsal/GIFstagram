@@ -1,0 +1,48 @@
+<h1>Your GIFstagram</h1>
+
+<p>
+    <%= link_to 'New Picture', new_picture_path %>
+</p>
+
+<table>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+        <% @pictures.reverse.each do |picture| %>      
+          <td>
+              <%= image_tag picture.url, size: '150x150' %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= link_to 'Show', picture %> | 
+            <%= link_to 'Edit', edit_picture_url(picture) %> | 
+            <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %> 
+          </td>
+        </tr>
+          
+      </tr>
+      <tr>
+        <td><%= link_to "Leave Comment", new_picture_comment_url(picture) %></td>
+      </tr>
+      <tr>
+        <td>
+          <ul>
+            <% picture.comments.each do |comment| %> 
+              <li>             
+                  <%= comment.entry %> | <%= link_to "Edit", edit_picture_comment_url(picture, comment) %> | <%= link_to "Delete", picture_comment_url(picture, comment), method: :delete, confirm: "Sure you want to delete?" %>           
+              </li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+          
+  <% end %>
+</table>
+
+<br />
+
+
